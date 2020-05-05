@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+{% load staticfiles %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{project.project_detail_heading}}</title>
+  <link rel="shortcut icon" href="{{brand.favicon.url}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,800;1,300;1,400;1,500;1,600;1,800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+</head>
+
+<body>
+<!-- Start of the navbar -->
+<nav class="white">
+  <div class="container">
+      <div class="nav-wrapper" dir="ltr">
+          <a href="{% url 'home' %}" class="brand-logo">
+              <img src="{{brand.logo.url}}" width="150" alt="logo">
+          </a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger dark-text">
+              <i class="fas fa-bars"></i>
+          </a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down pl-2">
+              <li><a href="{% url 'home' %}">בית</a></li>
+              <li><a href="{% url 'service' %}">שירותים</a></li>
+              <li><a href="{% url 'portfolio' %}">תיק עבודות</a></li>
+              <li><a href="{% url 'aboutus' %}">עלינו</a></li>
+              <li><a href="{% url 'contact' %}">צור קשר</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<ul class="sidenav" id="mobile-demo">
+  <li><a href="{% url 'home' %}">בית</a></li>
+  <li><a href="{% url 'aboutus' %}">עלינו</a></li>
+  <li><a href="{% url 'service' %}">שירותים</a></li>
+  <li><a href="{% url 'portfolio' %}">תיק עבודות</a></li>
+  <li><a href="{% url 'contact' %}">צור קשר</a></li>
+</ul>
+<!-- End of the navbar -->
+
+  <!-- Start of the description -->
+  <div class="row flex">
+    <!-- <div class="col l8" style="background-image: url('{{project.image.url}}'); background-size: cover;"></div> -->
+    <div class="col l8 pull-l2">
+      <div class="section-padding-a pr-3 center">
+        <h3>{{project.project_detail_heading}}</h3>
+        <p class="light-dark-text">{{project.project_detail_subheading}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- images goes here -->
+  <div class="container">
+    <div class="row center mt-2">
+      {% for photo in photos %}
+      <div class="col l12">
+        <img src="{{photo.images.url}}" class="responsive-img" data-aos="fade-up" alt="">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <!-- End of the description -->
+
+  <!-- Related project -->
+  <div class="container">
+    <div class="row section-padding-a">
+      <h5>Related Projects</h5>
+      {% for p in projects %}
+      {% if p.id != project.id %}
+      <div class="col l4" data-aos="fade-up">
+        <div class="card card-shadow">
+          <div class="card-image">
+            <img class="responsive-img" src="{{p.image.url}}" alt="">
+          </div>
+          <div class="card-content center-align">
+            <a href="{% url 'project_detail' p.category p.id %}"
+              class="heading-small dark-text">{{p.title}}</a>
+            <p class="paragraph-small">{{p.category}}</p>
+        
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- End of related project -->
+  <!-- start of the footer -->
+  <footer class="bgm-dark">
+    <div class="container">
+      <div class="row section-padding-a">
+        <div class="col l3 right right-align">
+          <a href="{% url 'home' %}">
+            <img src="{{brand.logo.url}}" width="180" class="responsive-img" alt="">
+          </a>
+          <p>מהעסקים המהימנים בעולם ועד סטארט-אפים, אנו עוזרים ביצירת חוויות המותג של העתיד באמצעות תרבות יצירתית המושרשת ביזמות ושיתוף פעולה עם שותפים</p>
+        </div>
+        <div class="col l3 right right-align">
+          <h6 class="footer-heading mb-2">צור קשר עם מידע</h6>
+          <p class="mt-1">רחוב פאולוס הששי 102, קומה 3
+            נצרת, ישראל</p>
+          <p class="mt-1">info@nazadv.com<br/>972-533065330+</p>
+        </div>
+        <div class="col l3 right right-align">
+          <h6 class="footer-heading mb-2">קישורים נוספים</h6>
+          <a href="{% url 'service' %}" class="footer-link">אסטרטגיית מותג</a>
+          <a href="{% url 'service' %}" class="footer-link">זהות מותג</a>
+          <a href="{% url 'service' %}" class="footer-link">שיווק דיגיטלי</a>
+          <a href="{% url 'service' %}" class="footer-link">עיצוב ופיתוח אתרים</a>
+          <a href="{% url 'service' %}" class="footer-link">תקשורת מעוצבת</a>
+          <a href="{% url 'service' %}" class="footer-link">הפקת וידאו</a>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-footer bgm-light-dark">
+      <div class="container">
+        <div class="row section-padding-a-min">
+          <div class="col l12">
+            <span class="footer-p">© 2020 All rights reserved by NAZADV</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End of the footer section -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

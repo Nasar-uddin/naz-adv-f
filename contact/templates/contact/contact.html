@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+{% load staticfiles %}
+
+<link>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NAZ ADV - Digital Advertising Agency</title>
+<link rel="shortcut icon" href="{{brand.favicon.url}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,800;1,300;1,400;1,500;1,600;1,800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+
+<body>
+<!-- Start of the navbar -->
+<nav class="white">
+    <div class="container">
+        <div class="nav-wrapper" dir="ltr">
+            <a href="{% url 'home' %}" class="brand-logo">
+                <img src="{{brand.logo.url}}" width="150" alt="logo">
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger dark-text">
+                <i class="fas fa-bars"></i>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down pl-2">
+              <li><a href="{% url 'contact' %}">צור קשר</a></li>
+              <li><a href="{% url 'aboutus' %}">עלינו</a></li>
+              <li><a href="{% url 'portfolio' %}">תיק עבודות</a></li>
+              <li><a href="{% url 'service' %}">שירותים</a></li>
+              <li><a href="{% url 'home' %}">בית</a></li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{% url 'contact' %}">צור קשר</a></li>
+    <li><a href="{% url 'aboutus' %}">עלינו</a></li>
+    <li><a href="{% url 'portfolio' %}">תיק עבודות</a></li>
+    <li><a href="{% url 'service' %}">שירותים</a></li>
+    <li><a href="{% url 'home' %}">בית</a></li>
+  </ul>
+<!-- End of the navbar -->
+    <!-- Start of the say hello section -->
+    <div class="container">
+        <div class="row section-padding-a-max">
+            <div class="col l8 offset-l2 center">
+                <h1 class="heading-large">{{contactText.heading}}</h1>
+                <p class="paragraph-small">{{contactText.subheading}}</p>
+                <button class="my-btn-primary">info@nazadv.com</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of the say hello section -->
+
+    <!-- Start of contacts section -->
+    <div class="bgm-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col m12 l6" data-aos="fade-up">
+                    <div class="center white-text section-padding-a">
+                        <i class="fas fa-2x fa-map-marked-alt"></i>
+                        <h6 class="heading-small">כתובת איש קשר</h6>
+                        <p class="paragraph-small">{{contacts.address}}</p>
+                    </div>
+                </div>
+                <div class="col m12 l6" data-aos="fade-up">
+                    <div class="center white-text section-padding-a">
+                        <i class="fas fa-2x fa-comments"></i>
+                        <h6 class="heading-small">בוא נדבר</h6>
+                        <p class="paragraph-small">{{contacts.mobile}}</p>
+                    </div>
+                </div>
+                <div class="col m12 l6" data-aos="fade-up">
+                    <div class="center white-text section-padding-a">
+                        <i class="fas fa-2x fa-envelope-open"></i>
+                        <h6 class="heading-small">שלח לנו מייל</h6>
+                        <p class="paragraph-small">{{contacts.email}}</p>
+                    </div>
+                </div>
+                <div class="col m12 l6" data-aos="fade-up">
+                    <div class="center white-text section-padding-a">
+                        <i class="fas fa-2x fa-clock"></i>
+                        <h6 class="heading-small">שעות עבודה</h6>
+                        <p class="paragraph-small">{{contacts.working_hours}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="">
+            <div id="map" style="min-height: 400px;"></div>
+        </div>
+    </div>
+    <!-- end of contacts section -->
+
+<!-- Start of the footer section -->
+    <footer class="bgm-dark">
+        <div class="container">
+        <div class="row section-padding-a">
+            <div class="col l3 right right-align">
+            <a href="{% url 'home' %}">
+                <img src="{{brand.logo.url}}" width="180" class="responsive-img" alt="">
+            </a>
+            <p>מהעסקים המהימנים בעולם ועד סטארט-אפים, אנו עוזרים ביצירת חוויות המותג של העתיד באמצעות תרבות יצירתית המושרשת ביזמות ושיתוף פעולה עם שותפים</p>
+            </div>
+            <div class="col l3 right right-align">
+            <h6 class="footer-heading mb-2">צור קשר עם מידע</h6>
+            <p class="mt-1">רחוב פאולוס הששי 102, קומה 3
+                נצרת, ישראל</p>
+            <p class="mt-1">info@nazadv.com<br/>972-533065330+</p>
+            </div>
+            <div class="col l3 right right-align">
+            <h6 class="footer-heading mb-2">קישורים נוספים</h6>
+            <a href="{% url 'service' %}" class="footer-link">אסטרטגיית מותג</a>
+            <a href="{% url 'service' %}" class="footer-link">זהות מותג</a>
+            <a href="{% url 'service' %}" class="footer-link">שיווק דיגיטלי</a>
+            <a href="{% url 'service' %}" class="footer-link">עיצוב ופיתוח אתרים</a>
+            <a href="{% url 'service' %}" class="footer-link">תקשורת מעוצבת</a>
+            <a href="{% url 'service' %}" class="footer-link">הפקת וידאו</a>
+            </div>
+        </div>
+        </div>
+        <div class="bottom-footer bgm-light-dark">
+        <div class="container">
+            <div class="row section-padding-a-min">
+            <div class="col l12">
+                <span class="footer-p">© 2020 All rights reserved by NAZADV</span>
+            </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+<!-- End of the footer section -->
+
+
+    <!-- google map script only for contact us page -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIBAmLi7H-IkVHXkrXjwMzTrgBP1IqXIw&callback=initMap">
+    </script>
+    <script>
+        function initMap() {
+            // The location of Uluru
+            var _loc = {lat: 32.7018921, lng: 35.2976923};
+            // The map, centered
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 10,
+                                                center: _loc,
+                                                streetViewControl: true,
+                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                            });
+            var marker = new google.maps.Marker({position: _loc, map: map});
+        }
+        initMap();
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
